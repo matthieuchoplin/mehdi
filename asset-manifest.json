@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/mehdi/static/css/main.7623f939.css",
-    "main.js": "/mehdi/static/js/main.8105dc6b.js",
+    "main.js": "/mehdi/static/js/main.d6946c08.js",
     "static/js/787.fd07f13c.chunk.js": "/mehdi/static/js/787.fd07f13c.chunk.js",
     "static/media/template_light_sav.docx": "/mehdi/static/media/template_light_sav.4a5bbc21f887ba5a75ac.docx",
     "index.html": "/mehdi/index.html",
     "main.7623f939.css.map": "/mehdi/static/css/main.7623f939.css.map",
-    "main.8105dc6b.js.map": "/mehdi/static/js/main.8105dc6b.js.map",
+    "main.d6946c08.js.map": "/mehdi/static/js/main.d6946c08.js.map",
     "787.fd07f13c.chunk.js.map": "/mehdi/static/js/787.fd07f13c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7623f939.css",
-    "static/js/main.8105dc6b.js"
+    "static/js/main.d6946c08.js"
   ]
 }
