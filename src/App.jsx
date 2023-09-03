@@ -39,8 +39,8 @@ function FormGeneralInfo() {
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
           <Row className="mb-3">
-            <Form.Group as={Col} md="8" controlId="validationCustom01">
-              <Form.Label>Intitulé de l'opération / Nature des travaux</Form.Label>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label>Référence PP</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -49,8 +49,8 @@ function FormGeneralInfo() {
                 onChange={(e) => setFormData({ ...formData, reference_pp: e.target.value })}
               />
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
-              <Form.Label>Numéro de commande</Form.Label>
+            <Form.Group as={Col} md="8" controlId="validationCustom02">
+              <Form.Label>Intitulé de l'opération / Nature des travaux</Form.Label>
               <Form.Control
                 required
                 type="text"
