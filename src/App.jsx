@@ -12,10 +12,9 @@ import Row from 'react-bootstrap/Row';
 
 function FormGeneralInfo() {
   const [validated, setValidated] = useState(false);
-  const [reference_pp, setReference_pp] = useState("");
-  const [operation_name, setOperation_name] = useState("");
+  const [formData, setFormData] = useState({ reference_pp: '', operation_name: '' });
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
           event.preventDefault();
@@ -24,9 +23,13 @@ function FormGeneralInfo() {
 
       setValidated(true);
       if (form.checkValidity() === true) {
-          console.log("heeeere")
-          console.log(reference_pp);
-          console.log(operation_name);
+          event.preventDefault();
+          try {
+              const result = await generateDocument(formData, template);
+              console.log('Promise result:', result);
+          } catch (err) {
+              console.log(err.message || 'An error occurred');
+          }
       }
   }
 
@@ -42,9 +45,8 @@ function FormGeneralInfo() {
                 required
                 type="text"
                 placeholder="Réaménagement du site"
-                // defaultValue=""
-                value={reference_pp}
-                onChange={(e) => setReference_pp(e.target.value)}
+                value={formData.reference_pp}
+                onChange={(e) => setFormData({ ...formData, reference_pp: e.target.value })}
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="validationCustom02">
@@ -53,24 +55,21 @@ function FormGeneralInfo() {
                 required
                 type="text"
                 placeholder="XXXX"
-                // defaultValue="Otto"
-                value={operation_name}
-                onChange={(e) => setOperation_name(e.target.value)}
+                value={formData.operation_name}
+                onChange={(e) => setFormData({ ...formData, operation_name: e.target.value })}
               />
             </Form.Group>
           </Row>
-          {/* TODO: how to call the promise from the submit handler? */}
-          {/*<Button type="submit">Générer rapport</Button>*/}
-          <Button onClick={() => generateDocument({reference_pp, operation_name}, template)}>Générer rapport</Button>
+          <Button type="submit">Générer rapport</Button>
         </Form>
       </div>
   );
 }
 
-async function generateDocument({reference_pp, operation_name}, templatePath) {
+async function generateDocument(data, templatePath) {
     let doc_params = {
-              reference_pp: reference_pp,
-              operation_name: operation_name,
+              reference_pp: data.reference_pp,
+              operation_name: data.operation_name,
               nature_des_travaux: "bla3",
               nom_et_address_du_site: "bla3",
               code_nidt_noim: "bla3",
@@ -109,8 +108,6 @@ function App() {
   return (
     <div className="App">
         <FormGeneralInfo />
-        {/*<Button onClick={() => generateDocument(doc_params, template)}>Generer rapport</Button>*/}
-        {/*<button onClick={() => generateDocument(doc_params, template)}>Generer rapport</button>*/}
     </div>
   );
 }
