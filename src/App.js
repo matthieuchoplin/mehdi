@@ -1,6 +1,7 @@
 import './App.css';
 import Docxtemplater from 'docxtemplater';
 import PizZip from 'pizzip';
+import Button from 'react-bootstrap/Button';
 import { saveAs } from 'file-saver';
 
 import template from './template_light_sav.docx';
@@ -48,7 +49,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={() => generateDocument(doc_params, template)}>Generer rapport</button>
+        <Button onClick={() => generateDocument(doc_params, template)}>Generer rapport</Button>
+        {/*<button onClick={() => generateDocument(doc_params, template)}>Generer rapport</button>*/}
       </header>
     </div>
   );
